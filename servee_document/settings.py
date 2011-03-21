@@ -5,4 +5,4 @@ DEFAULT_STORAGE = get_storage_class(
     getattr(settings, "SERVEE_INSERT_STORAGE_CLASS", settings.DEFAULT_FILE_STORAGE)
 )
 
-IMAGE_UPLOAD_TO = getattr(settings, "SERVEE_IMAGE_INSERT_UPLOAD_TO", "servee_images")
+DOCUMENT_UPLOAD_TO = getattr(settings, "SERVEE_DOCUMENT_INSERT_UPLOAD_TO", "servee_documents")

@@ -1,16 +1,16 @@
 {% load insert_tags %}
 {% load thumbnail %}
-	<div id="srv_insert_image_display">
-	   {% thumbnail object.image 175x225 as thumb %}
+	<div id="srv_insert_document_display">
+	   {% thumbnail object.document 175x225 as thumb %}
 	   <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
 	</div>
-	<h5 id="srv_insert_image_title">{{ object.title }}</h5>
-	<p id="srv_insert_image_description"></p>
-	<input type="hidden" name="srv_insert_image_pk" id="srv_insert_image_pk" value="{{ object.pk }}">
-	<input type="button" class="srv_button insert" id="srv_insert_image_action" value="Place image at Cursor">
+	<h5 id="srv_insert_document_title">{{ object.title }}</h5>
+	<p id="srv_insert_document_description"></p>
+	<input type="hidden" name="srv_insert_document_pk" id="srv_insert_document_pk" value="{{ object.pk }}">
+	<input type="button" class="srv_button insert" id="srv_insert_document_action" value="Place document at Cursor">
 <script type="text/javascript">
 $(document).ready(function(){
-	$("input#srv_insert_image_action").click(function(e){
+	$("input#srv_insert_document_action").click(function(e){
         $.ajax({
 		    url: "{% insert_render_url insert object.pk %}",
 		    success: function(data, text){

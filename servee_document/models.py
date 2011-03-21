@@ -1,14 +1,14 @@
 from django.db import models
 from django.conf import settings
-from servee_image.settings import DEFAULT_STORAGE, IMAGE_UPLOAD_TO
+from servee_document.settings import DEFAULT_STORAGE, DOCUMENT_UPLOAD_TO
 import datetime
 
-class BaseImage(models.Model):
+class BaseDocument(models.Model):
     """
-    Image model, You may notice that there's no image here,
+    Document model, You may notice that there's no file here,
     That's because you could still use this app, and subclass
-    BaseImage, and do something interesting with your own
-    Image, like 
+    BaseDocument, and do something interesting with your own
+    Document, like autoconvert to plain text for searching.
     
     """
     title = models.CharField(max_length=255, blank=True, null=True)
@@ -22,26 +22,26 @@ class BaseImage(models.Model):
     def save(self, *args, **kwargs):
         self.modified = datetime.datetime.now()
         if not self.title:
-            self.title = self.image.name
+            self.title = self.document.name
         if not self.uploaded:
             self.uploaded = datetime.datetime.now()
-        super(BaseImage, self).save(*args, **kwargs) # Call the "real" save() method.
+        super(BaseDocument, self).save(*args, **kwargs) # Call the "real" save() method.
         
     def get_absolute_url(self):
-        return '%s%s' % (settings.MEDIA_URL, self.image)
+        return '%s%s' % (settings.MEDIA_URL, self.document)
 
     class Meta:
         abstract = True
     
-class Image(BaseImage):
+class Document(BaseDocument):
     """
     """
-    image = models.ImageField(
-        upload_to=IMAGE_UPLOAD_TO,
+    document = models.FileField(
+        upload_to=DOCUMENT_UPLOAD_TO,
         storage=DEFAULT_STORAGE()
     )
     
     class Meta:        
-        verbose_name = "servee image"
-        verbose_name_plural = "servee images"
+        verbose_name = "servee document"
+        verbose_name_plural = "servee documents"
         ordering = ['modified',]

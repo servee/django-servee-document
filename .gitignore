@@ -1,9 +1,7 @@
 *.pyc
 .DS_Store
-build/
-build/*
-dist/
-dist/*
-django_servee_image.egg-info/*
+build*
+dist*
+*.egg-info/*
 *dev.db
 *site_media
