@@ -4,7 +4,7 @@
 	   {% thumbnail object.document 175x225 as thumb %}
 	   <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
 	</div>
-	<h5 id="srv_insert_document_title">{{ object.title }}</h5>
+	<p id="srv_insert_document_title">{{ object.title }}</p>
 	<p id="srv_insert_document_description"></p>
 	<input type="hidden" name="srv_insert_document_pk" id="srv_insert_document_pk" value="{{ object.pk }}">
 	<input type="button" class="srv_button insert" id="srv_insert_document_action" value="Place document at Cursor">
