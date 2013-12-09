@@ -16,7 +16,7 @@ def upload_documents(request):
     documents = []
     for f in request.FILES.getlist("file"):
         obj = Document.objects.create(document=f)
-        documents.append({"filelink": obj.document.url})
+        documents.append({"filelink": obj.document.url, "title": obj.title})
     return HttpResponse(json.dumps(documents), mimetype="application/json")
 
 
