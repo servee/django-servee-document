@@ -23,7 +23,7 @@ def upload_documents(request):
 @login_required
 def recent_documents(request):
     documents = [
-        {"thumb": obj.document.url, "document": obj.document.url}
+        {"thumb": obj.document.url, "document": obj.document.url, "title": obj.document.title}
         for obj in Document.objects.all().order_by("-uploaded")[:20]
     ]
     return HttpResponse(json.dumps(documents), mimetype="application/json")
