@@ -113,7 +113,7 @@ setup(
     package_data = find_package_data('servee_document',only_in_packages=False),
     install_requires = [
         # 'django-servee',
-        'PIL',
+        'Pillow',
         'easy-thumbnails',
     ],
     classifiers = [
