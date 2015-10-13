@@ -17,7 +17,7 @@ def upload_documents(request):
     for f in request.FILES.getlist("file"):
         obj = Document.objects.create(document=f)
         documents.append({"filelink": obj.document.url, "title": obj.title})
-    return HttpResponse(json.dumps(documents), mimetype="application/json")
+    return HttpResponse(json.dumps(documents), content_type="application/json")
 
 
 @login_required
@@ -26,4 +26,4 @@ def recent_documents(request):
         {"thumb": obj.document.url, "document": obj.document.url, "title": obj.title, "name": obj.document.name, "link": obj.document.url, "size": obj.document.size}
         for obj in Document.objects.all().order_by("-uploaded")[:20]
     ]
-    return HttpResponse(json.dumps(documents), mimetype="application/json")
+    return HttpResponse(json.dumps(documents), content_type="application/json")
