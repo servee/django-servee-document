@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
+from . import views
 
-urlpatterns = patterns("",
-    url(r"^upload/$", "servee_document.views.upload_documents", name="servee_document_upload_documents"),
-    url(r"^recent/$", "servee_document.views.recent_documents", name="servee_document_recent_documents")
-)
+urlpatterns = [
+    url(r"^upload/$", views.upload_documents, name="servee_document_upload_documents"),
+    url(r"^recent/$", views.recent_documents, name="servee_document_recent_documents")
+]
